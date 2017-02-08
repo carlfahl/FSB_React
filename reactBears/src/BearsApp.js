@@ -1,21 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './BearsApp.css';
+import BearsTable from './BearsTable';
+import BearPostForm from './BearPostForm';
 
-class App extends Component {
-  render() {
+var BearsApp = React.createClass({
+  getInitialState: function () {
+    var bears = [{name: 'Yogi', species:'Black', age: 20, weight: 400, location: 'bozeman', attitude: 'average'}];
+    return {bears: bears, showUpdate: false};
+  },
+  getBears: function () {
+    // AJax GET to API to get list of bears.
+  },
+  addABear: function () {
+    // AJax POST to add a Bear.
+  },
+  updateABear: function () {
+    // PUT to API to update a bear.
+  },
+  deleteABear: function () {
+    // DELETE to API to delete a bear.
+  },
+  deleteHandler: function () {
+    console.log('Clicked the Delete Button');
+  },
+  updateHandler: function () {
+    console.log('Clicked the Update Button');
+  },
+  render: function () {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <BearsTable bears={this.state.bears} deleteHandler={this.deleteHandler} updateHandler={this.updateHandler}/>
+        <BearPostForm />
       </div>
     );
   }
-}
+});
 
-export default App;
+export default BearsApp;
