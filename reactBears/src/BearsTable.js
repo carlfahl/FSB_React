@@ -3,7 +3,7 @@ import {Table, Button} from 'react-bootstrap';
 
 function ActionBtn(props) {
   return (
-    <Button bsStyle="primary" onClick={props.onClick}>{props.text}</Button>
+    <Button bsStyle="primary" onClick={props.onClick()}>{props.text}</Button>
   );
 }
 
@@ -17,8 +17,9 @@ function BearsTable (props) {
               <td>{item.weight}</td>
               <td>{item.location}</td>
               <td>{item.attitude}</td>
-              <td><ActionBtn text="Delete" onClick={props.deleteHandler} /></td>
-              <td><ActionBtn text="Update" onClick={props.updateHandler} /></td>
+              {/* Passing the functions by props to the buttons themselves */}
+              <td><ActionBtn text="Delete" onClick={props.deleteHandler(item._id)} /></td>
+              <td><ActionBtn text="Update" onClick={props.updateHandler(item._id)} /></td>
             </tr>
           );
   });

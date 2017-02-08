@@ -3,9 +3,13 @@ import './BearsApp.css';
 import BearsTable from './BearsTable';
 import BearPostForm from './BearPostForm';
 
+//var UpdateContainer = React.createClass({
+
+//});
+
 var BearsApp = React.createClass({
   getInitialState: function () {
-    var bears = [{name: 'Yogi', species:'Black', age: 20, weight: 400, location: 'bozeman', attitude: 'average'}];
+    var bears = [{name: 'Yogi', species:'Black', age: 20, weight: 400, location: 'bozeman', attitude: 'average', _id: 5}];
     return {bears: bears, showUpdate: false};
   },
   getBears: function () {
@@ -20,17 +24,22 @@ var BearsApp = React.createClass({
   deleteABear: function () {
     // DELETE to API to delete a bear.
   },
-  deleteHandler: function () {
-    console.log('Clicked the Delete Button');
+  // These two functions are the simple test handlers.  Before adding paramter, they worked, but that is not useful
+  deleteHandler: function (i) {
+    console.log('Clicked the ' + i + ' Delete Button');
   },
-  updateHandler: function () {
-    console.log('Clicked the Update Button');
+  updateHandler: function (i) {
+    console.log('Clicked the ' + i + ' Update Button');
+  },
+  submitHandler: function () {
+    console.log("Subitted the form");
   },
   render: function () {
     return (
       <div>
-        <BearsTable bears={this.state.bears} deleteHandler={this.deleteHandler} updateHandler={this.updateHandler}/>
-        <BearPostForm />
+        {/* The next line is where I send the handler functions.  This was done with arrow functions in the Facebook tutorial*/}
+        <BearsTable bears={this.state.bears} deleteHandler={function (i) {this.deleteHandler.bind(this, i)}} updateHandler={function (i) {this.updateHandler.bind(this,i)}} />
+        <BearPostForm onSubmit={this.submitHandler} />
       </div>
     );
   }
