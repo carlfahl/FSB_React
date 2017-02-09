@@ -1,11 +1,11 @@
 import React from 'react';
 import {Table, Button} from 'react-bootstrap';
 
-function ActionBtn(props) {
-  return (
-    <Button bsStyle="primary" onClick={props.onClick()}>{props.text}</Button>
-  );
-}
+// function ActionBtn(props) {
+  // return (
+    // <Button bsStyle="primary" onClick={props.onClick()}>{props.text}</Button>
+  // );
+// }
 
 function BearsTable (props) {
   console.log(props.bears);
@@ -18,8 +18,10 @@ function BearsTable (props) {
               <td>{item.location}</td>
               <td>{item.attitude}</td>
               {/* Passing the functions by props to the buttons themselves */}
-              <td><ActionBtn text="Delete" onClick={props.deleteHandler(item._id)} /></td>
-              <td><ActionBtn text="Update" onClick={props.updateHandler(item._id)} /></td>
+              {/*<td><ActionBtn text="Delete" onClick={props.deleteHandler(item._id)} /></td>*/}
+              {/*<td><ActionBtn text="Update" onClick={props.updateHandler(item._id)} /></td>*/}
+              <Button bsStyle="primary" onClick={() => props.deleteHandler(item._id)}>Delete</Button>
+              <Button bsStyle="primary" onClick={() => props.updateHandler(item._id)}>Update</Button>
             </tr>
           );
   });

@@ -1,7 +1,7 @@
 import React from 'react';
 
 var BearsList = function (props) {
-  var bearsList = this.props.bears.map(function(b){
+  var bearsList = props.bears.map(function(b){
     return <li> { b.name } </li>
   });
   return (
