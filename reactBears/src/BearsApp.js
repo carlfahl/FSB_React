@@ -1,3 +1,12 @@
+// - Bears App (decides which component to render)
+//  - ViewAllBearsData (Gets bears from server and passes them down)
+//    - BearsList (Renders bears into list items)
+//  - PostBearsData (holds state for bears form, submits bear to server)
+//    - BearPostForm (just a simple form)
+//  - EditBearsData (gets the bear from server, holds form state, posts bear to server)
+//    - BearEditForm (just a simple form)
+
+
 import React from 'react';
 import './BearsApp.css';
 import BearsTable from './BearsTable';
