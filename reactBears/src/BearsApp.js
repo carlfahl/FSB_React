@@ -38,7 +38,7 @@ var BearsApp = React.createClass({
     return (
       <div>
         {/* The next line is where I send the handler functions.  This was done with arrow functions in the Facebook tutorial*/}
-        <BearsTable bears={this.state.bears} deleteHandler={function (i) {this.deleteHandler.bind(this, i)}} updateHandler={function (i) {this.updateHandler.bind(this,i)}} />
+        <BearsTable bears={this.state.bears} deleteHandler={function (i) {this.deleteHandler(i)}} updateHandler={function (i) {this.updateHandler(i)}} />
         <BearPostForm onSubmit={this.submitHandler} />
       </div>
     );
