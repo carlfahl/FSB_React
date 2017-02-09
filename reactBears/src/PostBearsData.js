@@ -1,19 +1,30 @@
 import React from 'react';
 import BearPostForm from './BearPostForm';
+var $ = require('jquery');
 
-var ViewAllBearsData = React.createClass({
+var PostBearsData = React.createClass({
   getInitialState: function () {
     return {
       bearName: null,
-      bearColor: null
+      bearSpecies: null,
+      bearAge: null,
+      bearLocation: null,
+      bearAttitude: null,
+      bearWeight: null
     };
   },
-  updateBearName: function(name) {
+  updateBearData: function(data) {
+
     this.setState({ bearName: name })
   },
-  handleSubmit: function() {
-    // ajax to post bears
-    // data is this.state.bearName
+  handleSubmit: function(bearData) {
+    $.ajax({
+      url: '/api/bears',
+      method: 'POST',
+      data: bearData
+    }).done(function (bearData) {
+      console.log('Added a Bear!!');
+    });
   },
 
   render: function () {
@@ -25,4 +36,4 @@ var ViewAllBearsData = React.createClass({
   }
 });
 
-export default ViewAllBearsData;
+export default PostBearsData;

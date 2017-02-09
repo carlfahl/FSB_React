@@ -1,6 +1,6 @@
 import React from 'react';
 import BearsList from './BearsList';
-var $ = require('jquery');
+import $ from 'jquery';
 
 var ViewAllBearsData = React.createClass({
   getInitialState: function () {
@@ -14,9 +14,12 @@ var ViewAllBearsData = React.createClass({
   loadBearsFromServer: function() {
     var that = this;
     $.ajax('/api/bears').done(function (data) {
-      that.setState(bears: data);
+      console.log('Getting Bears Data');
+      console.log(data);
+      that.setState(that.bears: data);
     });
-    this.setState({ bears: [{name: "bob"}, {name: "joe"}] })
+    console.log("line after AJAX.");
+    // this.setState({ bears: [{name: "bob"}, {name: "joe"}] })
 
   },
 
