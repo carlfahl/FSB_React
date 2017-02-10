@@ -29,7 +29,8 @@ var BearsApp = React.createClass({
       return (<Home updateActiveComp={this.updateActiveComponent} />);
     } else if (this.state.activeComponent === "viewAll") {
       return (<ViewAllBears />);
-    } else if (this.activeComponent === "postNew") {
+    } else if (this.state.activeComponent === "postNew") {
+      console.log('rendering PostBearsData');
       return (<PostBearsData />);
     } else {
       return null;

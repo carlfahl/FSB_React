@@ -1,10 +1,10 @@
 import React from 'react';
-import {Form, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import {Form, FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
 function BearPostForm (props) {
   return (
     <div>
-      <Form onSubmit={() => props.onSubmit()} >
+      <Form>
         <FormGroup>
           <ControlLabel>Name</ControlLabel>
           <FormControl type="text" placeholder="Name" onChange={ (event) => props.updateBearName(event.target.value)} />
@@ -20,6 +20,7 @@ function BearPostForm (props) {
           <FormControl type="text" placeholder="Attitude" onChange={ (event) => props.updateBearAttitude(event.target.value)}/>
         </FormGroup>
       </Form>
+      <Button bsStyle="primary" onClick={() => props.onSubmit()}>Add New Bear</Button>
     </div>
   );
 }

@@ -20,11 +20,28 @@ var ViewAllBears = React.createClass({
       that.setState({bears: data});
     });
   },
+  deleteABear: function (id) {
+    $.ajax({
+      url: '/api/bears/'+id,
+      method: 'DELETE'
+    }).done(function () {
+      console.log('DELETED Bear with id: '+id);
+    });
+
+    var newData = this.state.bears.filter(function (item) {
+      return item._id !== id;
+    });
+
+    this.setState({bears: newData});
+  },
+  updateABear: function (id) {
+    console.log("Updating Bear with id: " + id);
+  },
   render: function () {
     return (
       <div>
         <h1>List of the Bears</h1>
-        {this.state.bears ? <BearsTable bears={this.state.bears} /> : null}
+        {this.state.bears ? <BearsTable bears={this.state.bears} deleteHandler={this.deleteABear} updateHandler={this.updateABear} /> : null}
       </div>
     )
   }

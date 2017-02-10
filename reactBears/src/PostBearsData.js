@@ -5,28 +5,49 @@ import $ from 'jquery';
 var PostBearsData = React.createClass({
   getInitialState: function () {
     return ({
-      bearName: null,
-      bearSpecies: null,
-      bearAge: null,
-      bearLocation: null,
-      bearAttitude: null,
-      bearWeight: null
+      name: null,
+      species: null,
+      age: null,
+      location: null,
+      attitude: null,
+      weight: null
     });
   },
   updateBearName: function (name) {
     var data = this.state;
-    data.bearName = name;
+    data.name = name;
     this.setState(data);
+    console.log(this.state);
   },
   updateBearAge: function (age) {
     var data = this.state;
-    data.bearAge = age;
+    data.age = age;
     this.setState(data);
+    console.log(this.state);
   },
-  updateBear: function (weight) {
+  updateBearWeight: function (weight) {
     var data = this.state;
-    data.bearWeight = weight;
+    data.weight = weight;
     this.setState(data);
+    console.log(this.state);
+  },
+  updateBearSpecies: function (species) {
+    var data = this.state;
+    data.species = species;
+    this.setState(data);
+    console.log(this.state);
+  },
+  updateBearLocation: function (location) {
+    var data = this.state;
+    data.location = location;
+    this.setState(data);
+    console.log(this.state);
+  },
+  updateBearAttitude: function (attidude) {
+    var data = this.state;
+    data.attitude = attidude;
+    this.setState(data);
+    console.log(this.state);
   },
   postNewBear: function () {
     $.ajax({
@@ -40,10 +61,14 @@ var PostBearsData = React.createClass({
   render: function () {
     return (
       <div>
+        <h1>New Bear Form</h1>
         <BearPostForm updateBearName={this.updateBearName}
                     updateBearAge={this.updateBearAge}
                     updateBearWeight={this.updateBearWeight}
-                    onSubmit={this.postNew} />
+                    updateBearSpecies={this.updateBearSpecies}
+                    updateBearLocation={this.updateBearLocation}
+                    updateBearAttitude={this.updateBearAttitude}
+                    onSubmit={this.postNewBear} />
       </div>
     );
   }

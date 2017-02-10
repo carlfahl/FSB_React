@@ -12,8 +12,8 @@ function BearsTable (props) {
               <td>{item.location}</td>
               <td>{item.attitude}</td>
               {/* Passing the functions by props to the buttons themselves */}
-              <Button bsStyle="primary" >Delete</Button>
-              <Button bsStyle="primary" >Update</Button>
+              <Button bsStyle="primary" onClick={(id) => props.deleteHandler(item._id)}>Delete</Button>
+              <Button bsStyle="primary" onClick={(id) => props.updateHandler(item._id)}>Update</Button>
             </tr>
           );
   });
