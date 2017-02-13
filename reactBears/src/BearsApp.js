@@ -38,8 +38,7 @@ var BearsApp = React.createClass({
       return (<ViewAllBears updateActiveComp={this.updateActiveComponent}
                 updateBear={this.updateBear} />);
     } else if (this.state.activeComponent === "postNew") {
-      console.log('rendering PostBearsData');
-      return (<PostBearsData />);
+      return (<PostBearsData updateActiveComp={this.updateActiveComponent}/>);
     } else if (this.state.activeComponent === "updateBear") {
       return <UpdateBearData bearId={this.state.updatingBear}
               updateActiveComp={this.updateActiveComponent}/>

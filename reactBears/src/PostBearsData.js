@@ -50,12 +50,14 @@ var PostBearsData = React.createClass({
     console.log(this.state);
   },
   postNewBear: function () {
+    var that = this;
     $.ajax({
       url: '/api/bears',
       method: 'POST',
       data: this.state
     }).done(function (data) {
       console.log('Added a Bear', data);
+      that.props.updateActiveComp("viewAll");
     });
   },
   render: function () {
