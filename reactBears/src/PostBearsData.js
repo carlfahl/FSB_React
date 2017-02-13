@@ -13,41 +13,11 @@ var PostBearsData = React.createClass({
       weight: null
     });
   },
-  updateBearName: function (name) {
-    var data = this.state;
-    data.name = name;
-    this.setState(data);
-    console.log(this.state);
-  },
-  updateBearAge: function (age) {
-    var data = this.state;
-    data.age = age;
-    this.setState(data);
-    console.log(this.state);
-  },
-  updateBearWeight: function (weight) {
-    var data = this.state;
-    data.weight = weight;
-    this.setState(data);
-    console.log(this.state);
-  },
-  updateBearSpecies: function (species) {
-    var data = this.state;
-    data.species = species;
-    this.setState(data);
-    console.log(this.state);
-  },
-  updateBearLocation: function (location) {
-    var data = this.state;
-    data.location = location;
-    this.setState(data);
-    console.log(this.state);
-  },
-  updateBearAttitude: function (attidude) {
-    var data = this.state;
-    data.attitude = attidude;
-    this.setState(data);
-    console.log(this.state);
+  onChangeHandler: function (field, value) {
+    var newData = {};
+    // {name: newName}
+    newData[field] = value;
+    this.setState(newData);
   },
   postNewBear: function () {
     var that = this;
@@ -64,12 +34,7 @@ var PostBearsData = React.createClass({
     return (
       <div>
         <h1>New Bear Form</h1>
-        <BearPostForm updateBearName={this.updateBearName}
-                    updateBearAge={this.updateBearAge}
-                    updateBearWeight={this.updateBearWeight}
-                    updateBearSpecies={this.updateBearSpecies}
-                    updateBearLocation={this.updateBearLocation}
-                    updateBearAttitude={this.updateBearAttitude}
+        <BearPostForm onChangeHandler={this.onChangeHandler}
                     onSubmit={this.postNewBear} />
       </div>
     );
