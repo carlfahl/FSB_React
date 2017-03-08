@@ -1,58 +1,45 @@
-// - Bears App (decides which component to render)
-//  - ViewAllBearsData (Gets bears from server and passes them down)
-//    - BearsList (Renders bears into list items)
-//  - PostBearsData (holds state for bears form, submits bear to server)
-//    - BearPostForm (just a simple form)
-//  - EditBearsData (gets the bear from server, holds form state, posts bear to server)
-//    - BearEditForm (just a simple form)
-
+// Container component - renders the correct view based on UI.
 
 import React from 'react';
-import './BearsApp.css';
 import Home from './Home';
-import ViewAllBears from './ViewAllBears';
-import PostBearsData from './PostBearsData';
-import UpdateBearData from './UpdateBearData';
-
-//var UpdateContainer = React.createClass({
-
-//});
+import ViewBearsContainer from './ViewBearsContainer';
+import PostBearContainer from './PostBearContainer';
+import EditBearContainer from './EditBearContainer';
 
 var BearsApp = React.createClass({
+  // Set up the UI state
   getInitialState: function () {
-    return {activeComponent: "Home",
-            updatingBear: null};
+    return (
+      {
+        activeComp: 'home',
+        activeID: null
+      }
+    )
   },
-  updateActiveComponent: function (whichIsActive) {
-    this.setState({activeComponent: whichIsActive});
+  // Change the state variables
+  setActiveComp: function (field, val) {
+    var newData = {};
+    newData[field] = val;
+    this.setState(newData);
   },
-  updateBear: function (bearId) {
-    var data = this.state;
-    data.updatingBear = bearId;
-    this.setState(data);
-  },
-  renderProperComponent: function () {
-    if (this.state.activeComponent === "Home") {
-      return (<Home updateActiveComp={this.updateActiveComponent} />);
-    } else if (this.state.activeComponent === "viewAll") {
-      return (<ViewAllBears updateActiveComp={this.updateActiveComponent}
-                updateBear={this.updateBear} />);
-    } else if (this.state.activeComponent === "postNew") {
-      return (<PostBearsData updateActiveComp={this.updateActiveComponent}/>);
-    } else if (this.state.activeComponent === "updateBear") {
-      return <UpdateBearData bearId={this.state.updatingBear}
-              updateActiveComp={this.updateActiveComponent}/>
-    } else {
-      return null;
+  // Change the viewed component based on the state.
+  renderProperComp: function () {
+    if (this.state.activeComp === 'home') {
+      return (<Home setActiveComp={this.setActiveComp} />);
+    } else if (this.state.activeComp === 'viewAll') {
+      return (<ViewBearsContainer setActiveComp={this.setActiveComp} />);
+    } else if (this.state.activeComp === 'postNew') {
+      return (<PostBearContainer setActiveComp={this.setActiveComp} />);
+    } else if (this.state.activeComp === 'edit') {
+      return (<EditBearContainer bear={this.state.activeID} setActiveComp={this.setActiveComp} />);
     }
   },
   render: function () {
     return (
       <div>
-        { /*Insert the output of the renderProperComponent here */}
-        {this.renderProperComponent()}
+        {this.renderProperComp()}
       </div>
-    );
+    )
   }
 });
 

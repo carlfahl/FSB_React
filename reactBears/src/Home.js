@@ -1,13 +1,18 @@
 import React from 'react';
+import {Jumbotron, Button} from 'react-bootstrap'
 
-var Home = function (props) {
-  return (
-    <div>
-      <h1>Welcome to the bears app!</h1>
-      <button onClick={ () => props.updateActiveComp('viewAll')  }>View All Bears</button>
-      <button onClick={ () => props.updateActiveComp('postNew')  }>Post New Bear</button>
-    </div>
-  );
-}
+var Home = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Jumbotron>
+          <h1>Welcome to the Bears App.</h1>
+          <Button bsStyle="primary" onClick={() => this.props.setActiveComp('activeComp', 'viewAll')}>View All Bears</Button>
+          <Button bsStyle="primary" onClick={() => this.props.setActiveComp('activeComp', 'postNew')}>Add Bears</Button>
+        </Jumbotron>
+      </div>
+    );
+  }
+});
 
 export default Home;
