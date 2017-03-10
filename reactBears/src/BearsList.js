@@ -12,7 +12,7 @@ var BearsList = React.createClass({
                 <td>{item.weight}</td>
                 <td>{item.location}</td>
                 <td>{item.attitude}</td>
-                <td><Button bsStyle="primary" onClick={() => self.props.deleteBearHandler(item._id)}>Delete</Button></td>
+                <td><Button bsStyle="primary" id={item._id} onClick={() => self.props.deleteBearHandler(item._id)}>Delete</Button></td>
                 <td><Button bsStyle="primary" onClick={() => self.props.updateBearHandler(item._id)}>Update</Button></td>
               </tr>);
     })

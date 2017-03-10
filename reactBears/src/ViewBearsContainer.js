@@ -29,6 +29,7 @@ var ViewBearsContainer = React.createClass({
       method: 'DELETE'
     }).done(function () {
       console.log("Deleted the bear.")
+      $("#"+id).closest('tr').remove();
     });
   },
   updateBearHandler: function (id) {

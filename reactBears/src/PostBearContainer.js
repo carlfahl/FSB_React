@@ -21,12 +21,14 @@ var PostBearContainer = React.createClass({
     this.setState(newData);
   },
   onSubmitHandler: function () {
+    var self = this;
     $.ajax({
       url: '/api/bears',
       method: 'POST',
       data: this.state
     }).done(function (data) {
       console.log(data);
+      self.props.setActiveComp('activeComp', 'viewAll');
     });
   },
   render () {
@@ -36,6 +38,6 @@ var PostBearContainer = React.createClass({
       </div>
     );
   }
-})
+});
 
 export default PostBearContainer;
