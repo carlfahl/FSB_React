@@ -38,7 +38,7 @@ var ViewBearsContainer = React.createClass({
   render () {
     return (
       <div>
-        <BearsList bears={this.state.bears} />
+        <BearsList bears={this.state.bears? this.state.bears : []} deleteBearHandler={this.deleteBearHandler} updateBearHandler={this.updateBearHandler} />
       </div>
     );
   }

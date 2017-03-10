@@ -1,12 +1,40 @@
-import React from 'react'
+import React from 'react';
+import PostBearForm from './PostBearForm';
+import $ from 'jquery';
 
 var PostBearContainer = React.createClass({
+  getInitialState: function () {
+    return (
+      {
+        name: null,
+        species: null,
+        age: null,
+        location: null,
+        attitude: null,
+        weight: null
+      }
+    );
+  },
+  onChangeHandler: function (field, value) {
+    var newData = {};
+    newData[field] = value;
+    this.setState(newData);
+  },
+  onSubmitHandler: function () {
+    $.ajax({
+      url: '/api/bears',
+      method: 'POST',
+      data: this.state
+    }).done(function (data) {
+      console.log(data);
+    });
+  },
   render () {
     return (
       <div>
-        <h1>This is where we post a new bear.</h1>
+        <PostBearForm onChangeHandler={this.onChangeHandler} onSubmitHandler={this.onSubmitHandler} />
       </div>
-    )
+    );
   }
 })
 
