@@ -22,22 +22,17 @@ var BearsApp = React.createClass({
     newData[field] = val;
     this.setState(newData);
   },
-  // Change the viewed component based on the state.
-  renderProperComp: function () {
-    if (this.state.activeComp === 'home') {
-      return (<Home setActiveComp={this.setActiveComp} />);
-    } else if (this.state.activeComp === 'viewAll') {
-      return (<ViewBearsContainer setActiveComp={this.setActiveComp} />);
-    } else if (this.state.activeComp === 'postNew') {
-      return (<PostBearContainer setActiveComp={this.setActiveComp} />);
-    } else if (this.state.activeComp === 'edit') {
-      return (<EditBearContainer bear={this.state.activeID} setActiveComp={this.setActiveComp} />);
-    }
+  Components: {
+    'home': Home,
+    'viewAll': ViewBearsContainer,
+    'postNew': PostBearContainer,
+    'edit': EditBearContainer
   },
   render: function () {
+    var ProperComp = this.Components[this.state.activeComp];
     return (
       <div>
-        {this.renderProperComp()}
+        <ProperComp bear={this.state.activeID} setActiveComp={this.setActiveComp} />
       </div>
     )
   }

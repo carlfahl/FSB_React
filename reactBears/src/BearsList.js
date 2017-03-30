@@ -5,7 +5,7 @@ var BearsList = React.createClass({
   render () {
     var self = this;
     var bears = this.props.bears.map(function (item) {
-      return (<tr>
+      return (<tr key={item._id}>
                 <td>{item.name}</td>
                 <td>{item.species}</td>
                 <td>{item.age}</td>
@@ -35,6 +35,7 @@ var BearsList = React.createClass({
             {bears}
           </tbody>
         </Table>
+        <Button bsStyle='primary' onClick={() => this.props.setActiveComp('activeComp','home')}>Home</Button>
       </div>
     )
   }
